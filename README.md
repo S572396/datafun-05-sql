@@ -53,3 +53,13 @@ use process of git add .
 git commit -m "commit for additon of pandas"
 git push -u origin main
 
+## Create csv files
+authors.csv and books.csv files manaully created with file add.
+data provided was copied and pasted.
+
+## commit added to document additon of csv files
+'''
+git add ,
+git commit -m "adding in authors.csv,aadding in books.csv"
+git push -u origin main
+'''
