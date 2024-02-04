@@ -50,6 +50,6 @@ requirements.txt updated
 '''
 ## 2nd commit added to document 
 use process of git add . 
-git commit "second commit for additon of pandas"
+git commit -m "commit for additon of pandas"
 git push -u origin main
 
