@@ -14,7 +14,7 @@ git clone into VS
  '''
  file add ".gitignore"
  '''
- ## Instal requirements:
+ ## Install requirements:
 '''
 my -m pip install pandas pyarrow
 '''
@@ -36,4 +36,20 @@ git commit -m "initial commit"
 '''
 git push -u origin main
 '''
+## install pandas
+upgrade pip 
+'''
+pip install --upgrade pip
+pip install pandas
+'''
+## freeze requirments
+'''
+py -m pip freeze > requirements.txt
+
+requirements.txt updated
+'''
+## 2nd commit added to document 
+use process of git add . 
+git commit "second commit for additon of pandas"
+git push -u origin main
 
