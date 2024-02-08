@@ -10,4 +10,10 @@ INSERT INTO authors (author_name, genre) VALUES
     ('Elizabeth Gaskell', 'horror'),
     ('Linda Addison', 'horror');
 
-    
+
+
+
+
+
+
+

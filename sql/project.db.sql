@@ -1,19 +1,38 @@
--- create_tables.sql
+Schema Design:
 
--- Create Authors table
-CREATE TABLE IF NOT EXISTS authors (
-    author_id INTEGER PRIMARY KEY,
-    author_name TEXT NOT NULL
-);
+Table 1: authors
+Columns:
+author_id (Primary Key, Integer)
+author_name (Text)
+genre(Text)
 
--- Create Books table
-CREATE TABLE IF NOT EXISTS books (
-    book_id INTEGER PRIMARY KEY,
-    title TEXT NOT NULL,
-    author_id INTEGER NOT NULL,
-    publication_year INTEGER,
-    FOREIGN KEY (author_id) REFERENCES authors(author_id)
-);
+
+Table 2: books
+Columns:
+book_id (Primary Key, Integer)
+title (Text)
+publication_date (Date)
+author_id (Foreign Key referencing authors)
+
+-- Insert authors data
+INSERT INTO authors (author_name, genre) VALUES
+    ('Edgar Allen, Poe', 'horror'),
+    ('Shirley, Jackson', 'horror'),
+    ('John Langam', 'horror'),
+    ('Bram, Stoker', 'horror'),
+    ('Stephen, King', 'horror'),
+    ('Dean,Koontz','horror'),
+    ('Marry, Shelley','horror'),
+    ('Kayla, Chenault', 'horror')
+    ('Elizabeth, Gaskell','horror')
+    ('Linda, Addison', 'horror')
+
+    UPDATE authors SET last= 'Langan'
+    WHERE last= 'Langam' AND first = 'John'
+
+
+
+
 
 -- Import data from CSV into Authors table
 .mode csv

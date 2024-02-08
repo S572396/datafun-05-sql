@@ -1,8 +1,14 @@
 # Project 5 Working with Databases and SQL
-##Project Start:
+
+## Overview
+
+This project will demonstarte practice when working with Python and SQL.
+2 Tables named authors and books will be used to show various SQL commands and functions.
+
+###Environmental Setup:
 create git hub respoitory : https://github.com/S572396/datafun-05-sql
 git clone into VS 
- ##create virtual environment
+ ##create virtual environment using vs code
  '''
  phython -m venv.venv
  '''
@@ -53,11 +59,11 @@ use process of git add .
 git commit -m "commit for additon of pandas"
 git push -u origin main
 
-## Create csv files
+## Project Start: Create csv files
 authors.csv and books.csv files manaully created with file add.
 data provided was copied and pasted.
 
-## commit added to document additon of csv files
+### commit added to document additon of csv files
 '''
 git add ,
 git commit -m "adding in authors.csv,aadding in books.csv"
@@ -78,8 +84,9 @@ import sqlite3
 import pandas as pd
 import pathlib
 import csv
+import logging
 
-## add coding
+## Python File:
 '''
 db_file = pathlib.Path("project.db")
 
@@ -133,7 +140,7 @@ if __name__ == "__main__":
     main()
     
     '''
-## create sq tables:
+### create sq tables:
 '''
 create_tables.sql
 
@@ -169,5 +176,51 @@ CREATE TABLE authors (
 );
 After adding your content in VS Code, use git to add / commit / and push your content to GitHub. 
 '''
+### Logging
+configure logging to write a file named log.txt
+log the start of the program usging logging.info().
+log the end of the program using logging.info ().
+log exceptions using logging.exception().
+log the start and end of other major functions using logging.degub().
 
+### SQL command practice
+create_tables.sql - create your database schema using sql
+insert_records.sql - insert at least 10 additional records into each table.
+update_records.sql - update 1 or more records in a table.
+delete_records.sql - delete 1 or more records from a table.
+query_aggregation.sql - use aggregation functions including COUNT, AVG, SUM.
+query_filter.sql - use WHERE to filter data based on conditions.
+query_sorting.sql - use ORDER BY to sort data.
+query_group_by.sql - use GROUP BY clause (and optionally with aggregation)
+query_join.sql - use INNER JOIN operation and optionally include LEFT JOIN, RIGHT JOIN, etc.
+### Phthon and SQL Intergration
+
+Use Python to interact with the SQL database and execute SQL commands:
+
+import sqlite3
+
+def execute_sql_from_file(db_filepath, sql_file):
+    with sqlite3.connect(db_filepath) as conn:
+        with open(sql_file, 'r') as file:
+            sql_script = file.read()
+        conn.executescript(sql_script)
+        print(f"Executed SQL from {sql_file}")
+
+ ###   Define Main Function for SQL Operations Script
+Implement a main() function to execute the project SQL operations logic.
+
+def main():
+    db_filepath = 'your_database.db'
+
+    # Create database schema and populate with data
+    execute_sql_from_file(db_filepath, 'insert_records.sql')
+    execute_sql_from_file(db_filepath, 'update_records.sql')
+    execute_sql_from_file(db_filepath, 'delete_records.sql')
+    execute_sql_from_file(db_filepath, 'query_aggregation.sql')
+    execute_sql_from_file(db_filepath, 'query_filter.sql')
+    execute_sql_from_file(db_filepath, 'query_sorting.sql')
+    execute_sql_from_file(db_filepath, 'query_group_by.sql')
+    execute_sql_from_file(db_filepath, 'query_join.sql')
+
+    logging.info("All SQL operations completed successfully    
  
