@@ -73,19 +73,11 @@ logging.info("Program  is near end.")
 
 # Connect to the SQLite database
 connection = sqlite3.connect('project.db')
-
-# Create a cursor object to execute SQL commands
 cursor = connection.cursor()
 
 # Insert 10 records into the 'authors' table
 import sqlite3
-
-import sqlite3
-
-# Connect to the SQLite database
 connection = sqlite3.connect('project.db')
-
-# Create a cursor object to execute SQL commands
 cursor = connection.cursor()
 
 # Create the 'authors' table if it doesn't exist
@@ -100,12 +92,7 @@ cursor.execute('''
 
 # Insert 10 records into the 'authors' table
 import sqlite3
-import sqlite3
-
-# Connect to the SQLite database
 connection = sqlite3.connect('project.db')
-
-# Create a cursor object to execute SQL commands
 cursor = connection.cursor()
 
 # Create the 'authors' table if it doesn't exist
@@ -118,7 +105,7 @@ cursor.execute('''
     )
 ''')
 
-# Insert 10 records into the 'authors' table
+# Insert 10 records into the 'authors' table example
 authors_data = [
     ('Edgar', 'Allan Poe', 'horror'),
     ('Shirley', 'Jackson', 'horror'),
@@ -142,7 +129,8 @@ connection.commit()
 with open('log.txt', 'a') as log_file:
     log_file.write('Authors and genres added successfully.\n')
 
-## Update Statement    
+
+## Update Records example  
 import sqlite3
 # Update the 'authors' table
 with sqlite3.connect('project.db') as connection:
@@ -154,26 +142,33 @@ with sqlite3.connect('project.db') as connection:
     except sqlite3.Error as e:
         print("SQLite error:", e)
 
-# Delete a Record from the 'books' table
+### Delete Records example
 import sqlite3
 
-# Delete a Record from the 'books' table based on specific column values
 with sqlite3.connect('project.db') as connection:
     cursor = connection.cursor()
 
     try:
-        cursor.execute("DELETE FROM books WHERE title = '1984'")
-        connection.commit()
+        cursor.execute("DELETE FROM 'books' WHERE title = '1984'")
+        rows_deleted = cursor.rowcount
+        if rows_deleted > 0:
+            print(f"Rows deleted: {rows_deleted}")
+            # Log to log.txt
+            with open('log.txt', 'a') as log_file:
+                log_file.write(f"Rows deleted: {rows_deleted}\n")
+        else:
+            print("No matching rows found for deletion.")
     except sqlite3.Error as e:
         print("SQLite error:", e)
+        # Log to log.txt
+        with open('log.txt', 'a') as log_file:
+            log_file.write(f"SQLite error: {e}\n")
+
+## Using Query Statement WHERE
 
 import sqlite3
-
-# Connect to the SQLite database
 connection = sqlite3.connect('project.db')
 cursor = connection.cursor()
-
-# Execute the SQL query
 cursor.execute("SELECT * FROM authors WHERE genre = 'horror'")
 result = cursor.fetchall()
 
@@ -183,6 +178,168 @@ print(result)
 # Print the result to log.txt
 with open('log.txt', 'a') as log_file:
     log_file.write(str(result) + '\n')
+
+import sqlite3
+
+connection = sqlite3.connect('project.db')
+cursor = connection.cursor()
+
+# Execute the SELECT query with ORDER BY
+cursor.execute('SELECT title FROM books ORDER BY title ASC')
+
+# Fetch the result
+result = cursor.fetchall()
+
+# Print the result
+print(result)
+
+# Print the result to log.txt
+with open('log.txt', 'a') as log_file:
+    log_file.write(str(result) + '\n')
+
+
+## Using Aggreation Functions
+    
+import sqlite3
+
+connection = sqlite3.connect('project.db')
+cursor = connection.cursor()
+
+# Query for horror genre count
+cursor.execute("SELECT COUNT(*) FROM authors WHERE genre = 'horror'")
+result_horror = cursor.fetchone()[0]
+print(f"Count of authors in horror genre: {result_horror}")
+
+# Query for science fiction genre count
+cursor.execute("SELECT COUNT(*) FROM authors WHERE genre = 'science fiction'")
+result_science_fiction = cursor.fetchone()[0]
+print(f"Count of authors in science fiction genre: {result_science_fiction}")
+
+# Print the results to log.txt
+with open('log.txt', 'a') as log_file:
+    log_file.write(f"Count of authors in horror genre: {result_horror}\n")
+    log_file.write(f"Count of authors in science fiction genre: {result_science_fiction}\n")
+
+#Using SUM
+import sqlite3
+
+# Establish a connection to your database
+conn = sqlite3.connect("project.db")
+cursor = conn.cursor()
+
+# Your SQL query
+query = """
+    SELECT SUM(rating) AS total_rating
+FROM books;
+
+"""
+
+cursor.execute(query)
+result = cursor.fetchone()
+
+total_rating = result[0]
+print(f"Total Rating: {total_rating}")
+# Print the results to log.txt
+with open('log.txt', 'a') as log_file:
+    log_file.write(f"Total Rating: {total_rating}\n")
+
+## Using AVG
+    import sqlite3
+
+# Establish a connection to your database
+conn = sqlite3.connect("project.db")
+cursor = conn.cursor()
+
+# Your SQL query
+query = """
+    SELECT AVG(rating) AS total_AVG
+FROM books;
+"""
+
+cursor.execute(query)
+result = cursor.fetchone()
+
+total_AVG = result[0]
+print(f"Total AVG: {total_AVG}")
+
+# Print the results to log.txt
+with open('log.txt', 'a') as log_file:
+    log_file.write(f"Total AVG: {total_AVG}\n")
+
+
+#Using ORDER BY
+import sqlite3
+
+# Establish a connection to your database
+conn = sqlite3.connect("project.db")
+cursor = conn.cursor()
+
+# Your SQL query
+query = """
+    SELECT year_published, COUNT(*) as book_count
+    FROM books
+    WHERE year_published > 1950
+    GROUP BY year_published
+    ORDER BY year_published;
+"""
+
+# Execute the query
+cursor.execute(query)
+
+# Fetch the results
+results = cursor.fetchall()
+
+# Display or process the results and write to log.txt
+with open('log.txt', 'a') as log_file:
+    for row in results:
+        print(f"Year Published: {row[0]}, Book Count: {row[1]}")
+        log_file.write(f"Year Published: {row[0]}, Book Count: {row[1]}\n")
+
+## Using INNER JOIN
+
+import sqlite3
+
+# Establish a connection to your database
+conn = sqlite3.connect("project.db")
+cursor = conn.cursor()
+
+# Your SQL query
+query = """
+    SELECT authors.first, authors.last, books.title, books.year_published, books.rating
+    FROM authors
+    INNER JOIN books ON authors.author_id = books.author_id;
+"""
+
+cursor.execute(query)
+results = cursor.fetchall()
+
+for row in results:
+    print(f"Author: {row[0]} {row[1]}, Title: {row[2]}, Year Published: {row[3]}, Rating: {row[4]}")
+    # Display or process the results and write to log.txt
+with open('log.txt', 'a') as log_file:
+    for row in results:
+        print(f"Author: {row[0]} {row[1]}, Title: {row[2]}, Year Published: {row[3]}, Rating: {row[4]}") 
+        log_file.write(f"Author:{row[0]} {row[1]}, Title: {row[2]}, Year Published: {row[3]}, Rating: {row[4]}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

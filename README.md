@@ -2,8 +2,8 @@
 
 ## Overview
 
-This project will demonstarte practice when working with Python and SQL.
-2 Tables named authors and books will be used to show various SQL commands and functions.
+""This project will demonstarte practice when working with Python and SQL.
+2 Tables named authors and books will be used to show various SQL commands and functions.""
 
 ###Environmental Setup:
 create git hub respoitory : https://github.com/S572396/datafun-05-sql
@@ -70,13 +70,8 @@ git commit -m "adding in authors.csv,aadding in books.csv"
 git push -u origin main
 '''
 ## Create a Database
-file create book_manager.py
-'''
-import dependencies:
-import sqlite3
-import pandas as pd
-import pathlib
-'''
+file created book_manager.py
+
 ## create new python file
 book_manager.py
 import dependencies:
@@ -144,19 +139,6 @@ if __name__ == "__main__":
 '''
 create_tables.sql
 
--- Start by deleting any tables if the exist already
--- We want to be able to re-run this script as needed.
--- DROP tables in reverse order of creation 
--- DROP dependent tables (with foreign keys) first
-
-DROP TABLE IF EXISTS books;
-DROP TABLE IF EXISTS authors;
-
--- Create the books table
--- Note that the books table has a foreign key to the authors table
--- This means that the books table is dependent on the authors table
--- Be sure to create the standalone authors table BEFORE creating the books table.
-
 CREATE TABLE books (
     book_id TEXT PRIMARY KEY,
     title TEXT,
@@ -172,7 +154,7 @@ CREATE TABLE authors (
     author_id TEXT PRIMARY KEY,
     first_name TEXT,
     last_name TEXT,
-    year_born INTEGER
+
 );
 After adding your content in VS Code, use git to add / commit / and push your content to GitHub. 
 '''
@@ -182,6 +164,7 @@ log the start of the program usging logging.info().
 log the end of the program using logging.info ().
 log exceptions using logging.exception().
 log the start and end of other major functions using logging.degub().
+results print to log.txt
 
 ### SQL command practice
 create_tables.sql - create your database schema using sql
