@@ -13,6 +13,7 @@ book_id (Primary Key, Integer)
 title (Text)
 publication_date (Date)
 author_id (Foreign Key referencing authors)
+rating (Text)
 
 -- Insert authors data
 INSERT INTO authors (author_name, genre) VALUES
@@ -29,9 +30,6 @@ INSERT INTO authors (author_name, genre) VALUES
 
     UPDATE authors SET last= 'Langan'
     WHERE last= 'Langam' AND first = 'John'
-
-
-
 
 
 -- Import data from CSV into Authors table

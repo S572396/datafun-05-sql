@@ -3,85 +3,62 @@
 ## Overview
 
 ""This project will demonstarte practice when working with Python and SQL.
-2 Tables named authors and books will be used to show various SQL commands and functions.""
+2 Tables named authors and books will be used to show various SQL commands and function statements.""
 
-###Environmental Setup:
+# Project Setup:
 create git hub respoitory : https://github.com/S572396/datafun-05-sql
-git clone into VS 
- ##create virtual environment using vs code
+git clone into VS code
+create virtual environment using vs code and activate in terminal, add git ignore file
  '''
  phython -m venv.venv
- '''
- ## activate virtual environment
- '''
  .\venv\Scripts\activate
- '''
- ## add git ignore file
- '''
  file add ".gitignore"
  '''
- ## Install requirements:
+ ## Install requirements and freeze requirements
 '''
 my -m pip install pandas pyarrow
-'''
-## freeze requirments
-'''
 py -m pip freeze > requirements.txt
 
-requirements.txt created
 '''
-## add files to source control
+## Add files to source control, commit and push to orign
 '''
 git add .
-'''
-## commit changes to repository
-'''
 git commit -m "initial commit"
-'''
-## git push to repository
-'''
 git push -u origin main
 '''
-## install pandas
-upgrade pip 
+## Install pandas and freeze requirements
 '''
 pip install --upgrade pip
 pip install pandas
-'''
-## freeze requirments
-'''
 py -m pip freeze > requirements.txt
-
-requirements.txt updated
 '''
-## 2nd commit added to document 
-use process of git add . 
-git commit -m "commit for additon of pandas"
-git push -u origin main
 
-## Project Start: Create csv files
+# Project Start: Create csv files
 authors.csv and books.csv files manaully created with file add.
 data provided was copied and pasted.
 
-### commit added to document additon of csv files
+## commit added to document additon of csv files
 '''
 git add ,
 git commit -m "adding in authors.csv,aadding in books.csv"
 git push -u origin main
 '''
-## Create a Database
+## Create a Python Database
 file created book_manager.py
 
-## create new python file
-book_manager.py
+## Import Dependencies for Python File
+'''
 import dependencies:
 import sqlite3
 import pandas as pd
 import pathlib
 import csv
 import logging
+'''
+# SQl files created
+  project.db, projectdb.sql, insert_records.sql, insert_additonal_authors.sql, create_tables.sql
 
-## Python File:
+# Python File book_manager.py to create database, tables, files, logging and SQL Practice
 '''
 db_file = pathlib.Path("project.db")
 
@@ -135,7 +112,7 @@ if __name__ == "__main__":
     main()
     
     '''
-### create sq tables:
+# Create SQL tables:
 '''
 create_tables.sql
 
@@ -145,6 +122,7 @@ CREATE TABLE books (
     year_published INTEGER,
     author_id TEXT,
     FOREIGN KEY (author_id) REFERENCES authors(author_id)
+    rating (REAL)
 );
 
 -- Create the authors table 
@@ -154,11 +132,12 @@ CREATE TABLE authors (
     author_id TEXT PRIMARY KEY,
     first_name TEXT,
     last_name TEXT,
+    genre (TEXT)
 
 );
 After adding your content in VS Code, use git to add / commit / and push your content to GitHub. 
 '''
-### Logging
+# Logging Implemented
 configure logging to write a file named log.txt
 log the start of the program usging logging.info().
 log the end of the program using logging.info ().
@@ -166,44 +145,29 @@ log exceptions using logging.exception().
 log the start and end of other major functions using logging.degub().
 results print to log.txt
 
-### SQL command practice
-create_tables.sql - create your database schema using sql
-insert_records.sql - insert at least 10 additional records into each table.
-update_records.sql - update 1 or more records in a table.
-delete_records.sql - delete 1 or more records from a table.
-query_aggregation.sql - use aggregation functions including COUNT, AVG, SUM.
-query_filter.sql - use WHERE to filter data based on conditions.
-query_sorting.sql - use ORDER BY to sort data.
-query_group_by.sql - use GROUP BY clause (and optionally with aggregation)
-query_join.sql - use INNER JOIN operation and optionally include LEFT JOIN, RIGHT JOIN, etc.
-### Phthon and SQL Intergration
+# SQL command practice-see code in book_manager.py
+1.create_tables.sql - create your database schema using sql- Created projectdb.sql for schema map
+2.insert_records.sql - insert at least 10 additional records into each table-Example of Insert 10 records into the 'authors' table example with 10 authors and horror genre added
+3.update_records.sql - update 1 or more records in a table.-Example John Lagam update to John Langan
+4.delete_records.sql - delete 1 or more records from a table.-Example title "1984" deleted from books table
+5.query_aggregation.sql - use aggregation functions including COUNT, AVG, SUM.
+  -COUNT example for count of horror authors and science fictions authors
+  -AVG example for AVG for rating column of books table
+  -SUM example for SUM of rating column of books table
+6.query_filter.sql - use WHERE to filter data based on conditions- Example of SELECT from authors WHERE genre= horror
+7.query_sorting.sql - use ORDER BY to sort data.-Example of SELECT title FROM books ORDER BY title ASC
+8.query_group_by.sql - use GROUP BY clause (and optionally with aggregation)-Example GROUP By year_published where year >1950
+query_join.sql - use INNER JOIN operation-Example of INNER JOIN author_id from authors and books table
 
-Use Python to interact with the SQL database and execute SQL commands:
+ #  Define Main Function for SQL Operations Script
+I
+    db_filepath = 'project.db'
+    def main():
+    create_database()
+    create_tables()
+    insert_data_from_csv()
+    logging.info("All SQL operations completed successfully")   
 
-import sqlite3
-
-def execute_sql_from_file(db_filepath, sql_file):
-    with sqlite3.connect(db_filepath) as conn:
-        with open(sql_file, 'r') as file:
-            sql_script = file.read()
-        conn.executescript(sql_script)
-        print(f"Executed SQL from {sql_file}")
-
- ###   Define Main Function for SQL Operations Script
-Implement a main() function to execute the project SQL operations logic.
-
-def main():
-    db_filepath = 'your_database.db'
-
-    # Create database schema and populate with data
-    execute_sql_from_file(db_filepath, 'insert_records.sql')
-    execute_sql_from_file(db_filepath, 'update_records.sql')
-    execute_sql_from_file(db_filepath, 'delete_records.sql')
-    execute_sql_from_file(db_filepath, 'query_aggregation.sql')
-    execute_sql_from_file(db_filepath, 'query_filter.sql')
-    execute_sql_from_file(db_filepath, 'query_sorting.sql')
-    execute_sql_from_file(db_filepath, 'query_group_by.sql')
-    execute_sql_from_file(db_filepath, 'query_join.sql')
-
-    logging.info("All SQL operations completed successfully    
+# Project wrap up
+   Last git add, git commit and push origin main completed
  
