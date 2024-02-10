@@ -327,7 +327,7 @@ def main():
     create_database()
     create_tables()
     insert_data_from_csv()
-    logging.info("All SQL operations completed successfully")   
+    logging.info("All SQL operations completed successfully, results to log.txt")   
     
 
 if __name__ == "__main__":
