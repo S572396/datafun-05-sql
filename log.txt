@@ -1,0 +1,18 @@
+2024-02-09 21:09:09,415 - INFO - Log file created successfully in log.txt
+2024-02-09 21:09:09,415 - INFO - Program started.
+2024-02-09 21:09:09,415 - INFO - Program  is near end.
+2024-02-09 21:09:09,416 - INFO - All SQL operations completed successfully
+Authors and genres added successfully.
+Rows deleted: 1
+[('52078gec1', 'Dean', 'Koontz', 'horror'), ('67432hilc', 'Marry', ' Shelley', 'horror'), ('8733416dcab', 'Elizabeth', " Gaskell'", 'horror'), (None, 'Edgar', 'Allan Poe', 'horror'), (None, 'Shirley', 'Jackson', 'horror'), (None, 'John', 'Langan', 'horror'), (None, 'Bram', 'Stoker', 'horror'), (None, 'Stephen', 'King', 'horror'), (None, 'Dean', 'Koontz', 'horror'), (None, 'Mary', 'Shelley', 'horror'), (None, 'Kayla', 'Chenault', 'horror'), (None, 'Elizabeth', 'Gaskell', 'horror'), (None, 'Linda', 'Addison', 'horror')]
+[('Brave New World',), ('Fahrenheit 451',), ("Harry Potter and the Philosopher's Stone",), ('Pride and Prejudice',), ('The Catcher in the Rye',), ('The Great Gatsby',), ('The Hobbit',), ('The Lord of the Rings',), ('To Kill a Mockingbird',)]
+Count of authors in horror genre: 13
+Count of authors in science fiction genre: 0
+Total Rating: 63.9
+Total AVG: 7.1
+Year Published: 1951, Book Count: 1
+Year Published: 1953, Book Count: 1
+Year Published: 1954, Book Count: 1
+Year Published: 1960, Book Count: 1
+Year Published: 1997, Book Count: 1
+Author:Harper Lee, Title: To Kill a Mockingbird, Year Published: 1960, Rating: 5.0Author:F. Scott Fitzgerald, Title: The Great Gatsby, Year Published: 1925, Rating: 7.0Author:Aldous Huxley, Title: Brave New World, Year Published: 1932, Rating: 8.0Author:J.D. Salinger, Title: The Catcher in the Rye, Year Published: 1951, Rating: 5.5Author:Ray Bradbury, Title: Fahrenheit 451, Year Published: 1953, Rating: 6.8Author:Jane Austen, Title: Pride and Prejudice, Year Published: 1813, Rating: 6.7Author:J.R.R. Tolkien, Title: The Hobbit, Year Published: 1937, Rating: 7.3Author:J.R.R. Tolkien, Title: The Lord of the Rings, Year Published: 1954, Rating: 8.5Author:J.K. Rowling, Title: Harry Potter and the Philosopher's Stone, Year Published: 1997, Rating: 9.1
